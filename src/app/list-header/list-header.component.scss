@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+  .list {
+    .list-header {
+      background-color: #000;
+      color: rgb(0, 255, 0);
+      padding: 12px;
+      position: sticky;
+      top: 60px;
+    }
+    .list-content {
+      padding: 12px 0;
+    }
+  }
+}

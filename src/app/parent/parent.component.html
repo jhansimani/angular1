@@ -1,0 +1,12 @@
+<div class="box1">
+  <h3>Parent Dropdown</h3>
+  <ng-content></ng-content>
+  <select name="" id="" (change)="onChange($event)">
+    <option val="">Select State</option>
+    <option *ngFor="let state of states" [value]="state.name">
+      {{ state.name }}
+    </option>
+  </select>
+</div>
+
+<app-child></app-child>

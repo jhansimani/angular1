@@ -1,0 +1,139 @@
+<!-- <p>registration works!</p>
+<form [formGroup]="userForm">
+  <div>
+    <label for="name">Username</label>
+    <input type="text" formControlName="name" id="name" />
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" id="email" />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" id="password" />
+  </div>
+  <div>
+    <label for="confirmpassword">Confirm Password</label>
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      id="confirmpassword"
+    />
+  </div>
+  <div formGroupName="address">
+    <div>
+      <label for="street">Street</label>
+      <input type="text" formControlName="street" />
+    </div>
+    <div>
+      <label for="city">City</label>
+      <input type="text" formControlName="city" />
+    </div>
+    <div>
+      <label for="city">Pincode</label>
+      <input type="number" formControlName="pincode" />
+    </div>
+  </div>
+  <div formArrayName="hobbies">
+    <div><label>Hobby</label> <input type="text" /></div>
+    <button type="button" (click)="addHobby()">Add Hobby</button>
+
+    <div *ngFor="let hobby of hobbies.controls; let i = index">
+      <label for="hobby-{{ i }}">hobby-{{ i }}</label>
+      <input type="text" [formControlName]="i" id="hobby-{{ i }}" />
+    </div>
+  </div>
+</form> -->
+<div class="position-relative min-vh-100 mx-auto">
+  <div class="position-absolute row p-3 bottom-50">
+    <div class="col-lg-6 col-md-6 col-sm-12">Hello</div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <form
+        [formGroup]="registrationForm"
+        (ngSubmit)="submit()"
+        class="row g-3"
+      >
+        <div class="col-md-6 col-sm-12">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" formControlName="name" class="form-control" />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              !registrationForm.controls['name'].valid &&
+              (registrationForm.controls['name'].touched ||
+                registrationForm.controls['name'].dirty)
+            "
+          >
+            <p *ngIf="registrationForm.controls['name'].errors?.['required']">
+              Please choose a username.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="email" class="form-label">email</label>
+          <input type="email" formControlName="email" class="form-control" />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              !registrationForm.controls['email'].valid &&
+              (registrationForm.controls['email'].touched ||
+                registrationForm.controls['email'].dirty)
+            "
+          >
+            <p *ngIf="registrationForm.controls['email'].errors?.['required']">
+              Please enter email.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              !registrationForm.controls['password'].valid &&
+              (registrationForm.controls['password'].touched ||
+                registrationForm.controls['password'].dirty)
+            "
+          >
+            <p
+              *ngIf="registrationForm.controls['password'].errors?.['required']"
+            >
+              Please enter password.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="confirmPassword" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            formControlName="confirmPassword"
+            class="form-control"
+          />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              (!registrationForm.controls['confirmPassword'].valid ||
+                registrationForm.invalid) &&
+              (registrationForm.controls['confirmPassword'].touched ||
+                registrationForm.controls['confirmPassword'].dirty)
+            "
+          >
+            <p
+              *ngIf="registrationForm.controls['confirmPassword'].errors?.['required']"
+            >
+              Please enter confirm password.
+            </p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+table,
+tr,
+td,
+th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+
+  th {
+    text-align: center;
+  }
+}
+table {
+  tbody {
+    tr {
+      &:nth-child(n) {
+        color: #fff;
+      }
+      &:nth-child(n + 1) {
+        color: green;
+      }
+    }
+  }
+}
+.error-block {
+  color: red;
+}

@@ -1,0 +1,13 @@
+<p>users works!</p>
+<ul>
+  <li *ngFor="let user of users">
+    <span (click)="routeTo(user.id)"
+      ><a>{{ user.name }} </a></span
+    >
+    <span>{{ user.email }}</span>
+    <span>{{ user.password }}</span>
+    <span>{{ user.confirmPassword }}</span>
+  </li>
+</ul>
+
+

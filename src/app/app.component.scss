@@ -1,0 +1,57 @@
+.content {
+  padding: 12px;
+}
+
+app-shadow-dom-encapsulation,
+app-emulated-encapsulation,
+app-no-encapsulation {
+  border: 1px;
+  border-style: solid;
+}
+app-shadow-dom-encapsulation {
+  border-color: blue;
+}
+app-emulated-encapsulation {
+  border-color: green;
+}
+app-no-encapsulation {
+  border-color: red;
+}
+.form-group {
+  label {
+  }
+
+  .error-block {
+    p {
+      color: red;
+    }
+  }
+}
+.box1 {
+  height: 100px;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+@media (max-width: 1220px) {
+  .box1 {
+    max-width: 1220px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .box1 {
+    text-align: center;
+    background-color: #c81191;
+    color: #fff;
+  }
+}
+@media screen and (max-width: 375px) {
+  .box1 {
+    text-align: center;
+    color: #000;
+    background-color: #cfb532;
+  }
+}

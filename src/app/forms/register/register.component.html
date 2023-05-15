@@ -1,0 +1,128 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      placeholder="Please enter Name"
+      formControlName="name"
+    />
+    <div
+      class="error-block"
+      *ngIf="
+        !userForm.controls['name'].valid &&
+        (userForm.controls['name'].dirty || userForm.controls['name'].touched)
+      "
+    >
+      <p *ngIf="userForm.controls['name'].errors?.['required']" class="">
+        Please enter your name
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      id="email"
+      placeholder="Please enter you email Id"
+      formControlName="email"
+    />
+    <div
+      class="error-block"
+      *ngIf="
+        !userForm.controls['email'].valid &&
+        (userForm.controls['email'].dirty || userForm.controls['email'].touched)
+      "
+    >
+      <p *ngIf="userForm.controls['email'].errors?.['required']" class="">
+        Please enter your email
+      </p>
+      <p *ngIf="userForm.controls['email'].errors?.['email']" class="">
+        Please enter correct email id
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Please enter you password "
+      formControlName="password"
+    />
+    <div
+      class="error-block"
+      *ngIf="
+        !userForm.controls['password'].valid &&
+        (userForm.controls['password'].dirty ||
+          userForm.controls['password'].touched)
+      "
+    >
+      <p *ngIf="userForm.controls['password'].errors?.['required']" class="">
+        Please enter your password
+      </p>
+      <p *ngIf="userForm.controls['password'].errors?.['minlength']" class="">
+        Password must be at least 4 characters
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button (click)="addHobby()">Add hobby</button>
+    <div formArrayName="hobbies">
+      <div
+        class="form-group d-flex m-2"
+        *ngFor="let control of hobbies.controls; let i = index"
+      >
+        <input
+          type="text"
+          class="form-control"
+          placeholder=""
+          [formControlName]="i"
+        />
+        <button type="button" (click)="deleteHobby(i)">Delete Hobby</button>
+        <div
+          class="error-block"
+          *ngIf="
+            !hobbies.controls[i].valid &&
+            (hobbies.controls[i].touched || hobbies.controls[i].dirty)
+          "
+        >
+          <p *ngIf="hobbies.controls[i].errors?.['required']">
+            Please enter hobby name
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
+
+<table *ngIf="users">
+  <colgroup>
+    <col style="width: 100px; text-transform: uppercase" />
+    <col style="width: 200px; text-transform: lowercase" />
+    <col style="width: 250px; text-transform: capitalize" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.password }}</td>
+      <td>
+        <button type="button" (click)="onEdit(user, i)">Edit</button>
+        <button type="button" (click)="onDelete(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

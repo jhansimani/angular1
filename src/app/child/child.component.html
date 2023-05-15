@@ -1,0 +1,6 @@
+<h3>Child Dropdown</h3>
+<button class="btn btn-primary">Button primary</button>
+<select name="" id="" (change)="onChange($event)">
+  <option val="">Select City</option>
+  <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+</select>
